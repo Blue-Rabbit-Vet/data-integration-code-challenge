@@ -1,19 +1,67 @@
-# Blue Rabbit Data Integration Code Challenge
+# Audio Media  Server
 
-Fork this repo and create an app using languages and frameworks of your choice that 
-*literally* introduces you to us. Submit your response back to us here in the form of a pull 
-request or submit it to us privately. Please don't spend more than a couple of hours on it. It's ok
-if you don't finish, just tackle the requirements in order and take it as far as you can in the time frame.
+This repo uses a mixture of Uncle Bob's clean architecture and Domain Driven Design.
 
-Include A README with instructions on how to build/run the app. Use the README to let us know
-why you chose the technologies you did. Notes on design patterns, challenges, or aspects
-of your stack that you find interesting are also appreciated!
 
-Provided is a `docker-compose-yml` file to help you start kafka. You are welcome to use other messaging services instead.
+# How to run app
 
-### Requirements
-1. Create an API with an endpoint or operation that we can call and pass data to, save the request to a database. The shape of the data and the storage mechanism are up to you.
-2. Create a sh script or add to README the commands to create topic/queue.
-3. Publish API data to a topic/queue.
-4. Add a consumer to your API to consume from the topic/queue and perform an operation of your choice with the message, .i.e. log to console, write to database, write to file.
-5. Create a minimal frontend that calls your api.
+Fastest to get the apps runs would to run the `init.sh` bash script. Before doing that consult the dependencies section. 
+
+The project uses go modules, so an appropriate version is needed, I recommend 1.12 and above.
+
+If you want to build the manual way, use `go run main.go` at the root of the project, or to `go build` .
+The app will run on port  `8080` or that can be easily changed using the `SERVICE_PORT` env variable like so `SERVICE_PORT=8000 go run main.go`.
+
+
+# Consumer
+The consumer is a slim application, that just listens for a subject and logs that even data to the filesystem.
+
+# Fun stuff
+
+This projects uses Nats which can be considered a messaging service, but more than anything it's a tool that enables distributed development.
+
+
+# Directory structure explanation
+
+- Domain
+
+    - Had the domain objects currently very simple aggregate structure without much behavior
+
+- Dto
+
+    - Simple DTO helpers
+
+- Interfaces
+
+    - Contains the repository interface implementation,and also the the route handlers. This project uses `Chi`
+
+- Usecases
+
+    - Contains the application service and top level application orchestration logic
+
+# Database 
+
+This app uses `SQLite` for the metadata and the filepath storage of audio filles (currently just wav format)
+
+
+
+# Dependencies
+
+- SQLite 3: You will need to have this installed locally
+- Nats Messaging Server: will be provided with docker-compose
+- Golang: Needs to be installed locally, go version 1.12 and up 
+
+# How to run tests
+
+-  Unit tests
+
+    - Best done the idiomatic way using `go test ./...` at the root
+        
+
+# Triggering the API Endpoint
+
+```
+curl --location --request POST 'localhost:8089/upload?name=ping.wav' \
+--header 'Content-Type: audio/wave' \
+--data-binary '{path to your wav file}'
+```
