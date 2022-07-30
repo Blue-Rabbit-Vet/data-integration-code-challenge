@@ -64,9 +64,9 @@ const App = (props) => {
     });
   };
 
-  const setInventory = () => {
+  const setIsPaid = () => {
     payload.isPaid = !payload.isPaid;
-    console.log("In stock: ", payload.isPaid);
+    console.log("Has paid: ", payload.isPaid);
   };
 
   const recordTDs = fetchedData.map((row) => {
@@ -82,7 +82,7 @@ const App = (props) => {
 
   return (
     <Container className="appContainer">
-      <h1>Blue Rabbit Coding Test</h1>
+      <h2>Blue Rabbit Code Challenge</h2>
       <Row>
         <Col>
           <Form onSubmit={onSubmit} className="formContainer">
@@ -128,7 +128,7 @@ const App = (props) => {
 
             <Form.Group className="mb-3" controlId="formBasicCheckbox">
               <Form.Check
-                onChange={setInventory}
+                onChange={setIsPaid}
                 type="checkbox"
                 label="Procedure Paid For"
               />

@@ -1,5 +1,6 @@
 if [[ $# -eq 0 ]] ; then
-    echo "usage:  ./api_client.sh Rowen kathryn@email.com "heart+surgery" \$100 true" 
+    echo "usage:  ./api_client.sh Rowen kathryn@email.com "heart+surgery" 
+    \$100 true" 
     exit 
 fi
 
