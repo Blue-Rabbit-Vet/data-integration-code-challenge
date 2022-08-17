@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, redirect
 from flask_smorest import Api
 from flask_sqlalchemy import SQLAlchemy
 
@@ -18,8 +18,12 @@ db = SQLAlchemy(app)
 from blueprints.messages.messages import blp
 api.register_blueprint(blp)
 
+@app.route("/setup")
+def setup():
+    db.create_all()
+    return "<p>Database initiated</p>"
 @app.route("/")
 def home():
     db.create_all()
-    return "<p>Hello, World!</p>"
+    return redirect("/docs/ui", code=302)
 
