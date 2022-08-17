@@ -1,0 +1,4 @@
+kafka-python==2.0.2
+flask-smorest==0.38.1
+flask<2.2
+Flask-SQLAlchemy

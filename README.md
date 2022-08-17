@@ -17,3 +17,20 @@ Provided is a `docker-compose-yml` file to help you start kafka. You are welcome
 3. Publish API data to a topic/queue.
 4. Add a consumer to your API to consume from the topic/queue and perform an operation of your choice with the message, .i.e. log to console, write to database, write to file.
 5. Create a minimal frontend that calls your api.
+
+
+## Setup
+
+### Building locally
+
+First Navigate your terminal of choice to the root of the project folder
+
+Run the following command: `docker compose build`
+
+### Running locally
+
+After following the instructions to build the project complete you can then run the project with `docker compose up`
+
+This command will bring up all the required containers for the project.
+
+On first run the database will be empty, for ease of demoing (not recommended for production use) navigate to `localhost:5000` in your browser. This will 
