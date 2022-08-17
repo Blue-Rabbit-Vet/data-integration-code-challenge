@@ -33,12 +33,7 @@ services:
     environment:
       - PYTHONUNBUFFERED=1
     depends_on:
-      - database
       - broker
-  database:
-    image: postgres:14.5
-    environment:
-      POSTGRES_PASSWORD: NotAProductionPassword
   worker-consumer:
     build:
       context: .
