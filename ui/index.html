@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple DB interface</title>
+  </head>
+
+  <style>
+    body {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    form * {
+      margin: 10px 0;
+    }
+  </style>
+
+  <body>
+    <form>
+      <label>Name</label>
+      <input id="input" type="text" />
+      <button id="submit_button">Submit</button>
+    </form>
+    <p id="output"></p>
+  </body>
+
+  <script>
+    const button = document.getElementById("submit_button");
+    const input = document.getElementById("input");
+    const output = document.getElementById("output");
+
+    button.addEventListener("click", async (e) => {
+      e.preventDefault();
+
+      const name = input.value;
+
+			await fetch("/", { method: "POST", body: { name } })
+        .then(res => {
+          return res.json();
+        })
+        .then(json => {
+          if (json.error) {
+            output.innerHTML = json.error;
+          } else {
+            output.innerHTML = json.message;
+          }
+          setTimeout(() => {
+            output.innerHTML = '';
+          }, 5000);
+        })
+    });
+  </script>
+</html>

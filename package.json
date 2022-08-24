@@ -1,0 +1,27 @@
+{
+  "name": "data-integration-code-challenge",
+  "version": "1.0.0",
+  "description": "Fork this repo and create an app using languages and frameworks of your choice that  *literally* introduces you to us. Submit your response back to us here in the form of a pull  request or submit it to us privately. Please don't spend more than a couple of hours on it. It's ok if you don't finish, just tackle the requirements in order and take it as far as you can in the time frame.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "proxy": "http://localhost:8080",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryand67/data-integration-code-challenge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ryand67/data-integration-code-challenge/issues"
+  },
+  "homepage": "https://github.com/ryand67/data-integration-code-challenge#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "kafkajs": "^2.2.0",
+    "sqlite": "^4.1.2",
+    "sqlite3": "^5.0.11"
+  }
+}
