@@ -24,3 +24,21 @@ services:
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
       KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+
+  mongodb:
+      container_name: mongodb-integration-code-challenge
+      image: mongo:latest
+      restart: always
+      environment:
+        - MONGO_INITDB_ROOT_USERNAME=user
+        - MONGO_INITDB_ROOT_PASSWORD=password
+      ports:
+        - 27017:27017
+
+  playerapp:
+      container_name: playerapp
+      image: playerapplication:latest
+      environment:
+        - "SPRING_PROFILES_ACTIVE=live"
+      ports:
+        - "8080:8080"

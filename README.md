@@ -1,7 +1,7 @@
 # Blue Rabbit Data Integration Code Challenge
 
 Fork this repo and create an app using languages and frameworks of your choice that 
-*literally* introduces you to us. Submit your response back to us here in the form of a pull 
+*literally* introduces you to us. Submit your com.integration.response back to us here in the form of a pull 
 request or submit it to us privately. Please don't spend more than a couple of hours on it. It's ok
 if you don't finish, just tackle the requirements in order and take it as far as you can in the time frame.
 
