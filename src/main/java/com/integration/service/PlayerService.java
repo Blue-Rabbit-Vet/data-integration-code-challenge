@@ -5,6 +5,8 @@ import com.integration.dto.Player;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.UUID;
+
 @Component
 public class PlayerService {
 
@@ -15,9 +17,8 @@ public class PlayerService {
         this.playerDao = playerDao;
     }
 
-
     public String createPlayer(Player player){
         playerDao.save(player);
-        return "Some Key";
+        return UUID.randomUUID().toString();
     }
 }

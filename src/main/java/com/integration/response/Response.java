@@ -12,6 +12,8 @@ public class Response {
         this.message = message;
     }
 
+    public Response(){}
+
     public HttpStatus getStatus() {
         return status;
     }
