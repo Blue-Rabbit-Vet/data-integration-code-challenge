@@ -17,6 +17,7 @@ public class PlayerService {
         this.playerDao = playerDao;
     }
 
+    // TODO: Lookup before creating
     public String createPlayer(Player player){
         playerDao.save(player);
         return UUID.randomUUID().toString();
