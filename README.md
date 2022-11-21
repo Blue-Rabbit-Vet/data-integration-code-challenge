@@ -40,7 +40,7 @@ curl --location --request PUT 'http://localhost:8080/updateplayer' \
 }'
 
 # Technologies
-I chose the technologies that I did because I was most familiar with them and I thought that defined the work I have done most professionally.
+I chose the technologies that I did because I was most familiar with them and I thought that they defined the work I have done most professionally.
 I chose mongo because I thought it would be something fun to incorporate in the project that didn't add too much additional overhead.
 
 For the java side. I created a spring boot app that has both a Rest Controller to take calls from the frontend as well as a KafkaListener to listen to messages from the topic.
