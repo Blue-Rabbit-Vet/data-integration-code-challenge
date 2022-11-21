@@ -4,7 +4,7 @@ The docker-compose file that was supplied has been updated to run all parts of t
 Navigate to root directory and run,
 docker compose up
 
-You will also find the an sh file to create a topic with the name of 'players' in root/src/main/resource/config
+You will also find the a sh file to create a topic with the name of 'players' in root/src/main/resource/config
 
 Once everything is up and running you can navigate to http://localhost:3000/
 
