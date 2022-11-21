@@ -1,3 +1,70 @@
+# Running Application
+The docker-compose file that was supplied has been updated to run all parts of the requirements. I have added mongodb for my database, playerapp for my java backend, and react-ui for the frontend.
+
+Before running docker compose you will need to put the images for the backend and frontend into your local docker repository.
+
+1) Navigate to root directory and run 'docker build -t playerapplication .'
+2) After that navigate to root/frontend/front-end and run 'docker build -t frontend .'
+3) You should now see these images in your local docker repository.
+
+
+Navigate to root directory and run,
+docker compose up
+
+You will also find the a sh file to create a topic with the name of 'players' in root/src/main/resource/config
+
+Once everything is up and running you can navigate to http://localhost:3000/
+
+Here you will find a bare bones UI to take a first name, last name, and a number. 
+This UI will submit the value to be created in the mongodb.
+
+The rest api that the UI submits the players to is found here, http://localhost:8080.
+
+POST - creates a player
+/addplayer
+
+Hitting the Endpoint 
+curl --location --request PUT 'http://localhost:8080/addplayer' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "firstName": "Robert",
+    "lastName": "Wais",
+    "number": 43
+}'
+
+
+
+PUT
+/updateplayer - updates a players number
+
+Hitting the Endpoint 
+curl --location --request PUT 'http://localhost:8080/updateplayer' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "firstName": "Robert",
+    "lastName": "Wais",
+    "number": 43
+}'
+
+## Technologies
+I chose the technologies that I did because I was most familiar with them and I thought that they defined the work I have done most professionally.
+I chose mongo because I thought it would be something fun to incorporate in the project that didn't add too much additional overhead.
+
+### Backend
+For the java side. I created a spring boot app that has both a Rest Controller to take calls from the frontend as well as a KafkaListener to listen to messages from the topic.
+
+The Rest Controller calls a player service which then does most of the work. I create a key from the first name and last name. I use this value to make sure I don't create a similar player in the db. This was a simple way of using it with the mongodb but this is somewhere where I could definitely have a more robust solution. I could create a script to create a unique index on the key value to also have database validation. The uniqueness in this case is based off of the first name and last name. Having an email or username in the future would be an improvement as well.
+
+The KafkaListener consumes the message and logs it to the console. Some improvements could be adding manual acknowledgement to my listener so that I am not depending on the container to commit the offset. Another improvement would be updating the container factory to have a few more custom values to align with the use of my listener such as a retry policy and/or a deadletter strategy.
+
+
+### Frontend
+For the front end I wrote a bare bones React app to submit to the api above. My experiences with react are extremely minimal but I thought it would be a good chance to try something a bit new. I added a few fields and a button to be able to submit to the backend api. A lot of room for improvements here. Some of them are basic styling, a responsive frontend on success or after submission, and/or the ability to update through the frontend.
+
+
+
+
+
 # Blue Rabbit Data Integration Code Challenge
 
 Fork this repo and create an app using languages and frameworks of your choice that 
