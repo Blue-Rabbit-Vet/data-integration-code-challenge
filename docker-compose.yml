@@ -37,7 +37,7 @@ services:
 
   playerapp:
       container_name: playerapp
-      image: playerapplication1:latest
+      image: playerapplication:latest
       depends_on:
         - mongodb
       environment:
