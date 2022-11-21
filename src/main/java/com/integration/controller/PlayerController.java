@@ -2,7 +2,6 @@ package com.integration.controller;
 
 import com.integration.service.PlayerService;
 import com.integration.dto.Player;
-import com.integration.service.PublishKafkaService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
