@@ -3,9 +3,10 @@ The docker-compose file that was supplied has been updated to run all parts of t
 
 Before running docker compose you will need to put the images for the backend and frontend into your local docker repository.
 
-1) Navigate to root directory and run 'docker build -t playerapplication .'
-2) After that navigate to root/frontend/front-end and run 'docker build -t frontend .'
-3) You should now see these images in your local docker repository.
+1) Navigate to root directory and run gradle clean && gradle build
+2) Navigate to root directory and run 'docker build -t playerapplication .'
+3) After that navigate to root/frontend/front-end and run 'docker build -t frontend .'
+4) You should now see these images in your local docker repository.
 
 
 Navigate to root directory and run,
