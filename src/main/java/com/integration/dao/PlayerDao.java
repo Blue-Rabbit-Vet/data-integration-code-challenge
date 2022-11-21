@@ -6,4 +6,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 /*
     Lookup extends
  */
-public interface PlayerDao extends MongoRepository<Player, String> { }
+public interface PlayerDao extends MongoRepository<Player, String> {
+
+    Player findByKey(String key);
+}

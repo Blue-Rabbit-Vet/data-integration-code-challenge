@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import com.integration.response.Response;
 
@@ -22,20 +23,26 @@ public class PlayerController {
     private static final Logger LOGGER = LoggerFactory.getLogger(PlayerController.class);
 
     private final PlayerService playerService;
-    private final PublishKafkaService publishKafkaService2;
     @Autowired
-    public PlayerController(PlayerService playerService, PublishKafkaService publishKafkaService2) {
+    public PlayerController(PlayerService playerService) {
         this.playerService = playerService;
-        this.publishKafkaService2 = publishKafkaService2;
     }
 
 
     @PostMapping(value = "/addplayer", headers = "Accept=application/json")
     public ResponseEntity<Response> addPlayer(@RequestBody Player player){
-        LOGGER.info("Received Player, firstName={}, lastName={}, number={}",player.getFirstName(), player.getLastName(), player.getNumber());
+        LOGGER.info("Received Player To Create, firstName={}, lastName={}, number={}",player.getFirstName(), player.getLastName(), player.getNumber());
 
-//        playerService.createPlayer(player);
-//        publishKafkaService2.sendMessage("players2", player);
+        playerService.createPlayer(player);
+
+        return new ResponseEntity<>(new Response(HttpStatus.OK,"Successful").getStatus());
+    }
+
+    @PutMapping (value = "/updateplayer", headers = "Accept=application/json")
+    public ResponseEntity<Response> updatePlayer(@RequestBody Player player){
+        LOGGER.info("Received Player To Update, firstName={}, lastName={}, number={}",player.getFirstName(), player.getLastName(), player.getNumber());
+
+        playerService.updatePlayer(player);
 
         return new ResponseEntity<>(new Response(HttpStatus.OK,"Successful").getStatus());
     }

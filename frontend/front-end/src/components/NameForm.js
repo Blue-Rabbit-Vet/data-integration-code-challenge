@@ -33,9 +33,15 @@ class NameForm extends React.Component {
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
-                <input type="text" name='firstName' value={this.state.firstName} onChange={this.handleChange}/>
-                <input type="text" name='lastName' value={this.state.lastName} onChange={this.handleChange} />
-                <input type="text" name='number' value={this.state.number} onChange={this.handleChange}/>
+                <div>
+                    <input type="text" name='firstName' placeholder="First Name"    value={this.state.firstName} onChange={this.handleChange}/>
+                </div>
+                <div>
+                    <input type="text" name='lastName'  placeholder="Last Name"     value={this.state.lastName} onChange={this.handleChange} />
+                </div>
+                <div>
+                    <input type="text" name='number'    placeHolder="Number"        value={this.state.number} onChange={this.handleChange}/>
+                </div>
                 <input type="submit" value="Submit" />
             </form>
         );

@@ -38,7 +38,17 @@ services:
   playerapp:
       container_name: playerapp
       image: playerapplication1:latest
+      depends_on:
+        - mongodb
       environment:
         - "SPRING_PROFILES_ACTIVE=live"
       ports:
         - "8080:8080"
+  react-ui:
+    container_name: react-ui
+    image: frontend:latest
+    stdin_open: true
+    ports:
+      - "3000:3000"
+    volumes:
+      - /usr/src/app/frontend/node_modules
