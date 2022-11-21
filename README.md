@@ -1,6 +1,13 @@
 # Running Application
 The docker-compose file that was supplied has been updated to run all parts of the requirements. I have added mongodb for my database, playerapp for my java backend, and react-ui for the frontend.
 
+Before running docker compose you will need to put the images for the backend and frontend into your local docker repository.
+
+1) Navigate to root directory and run 'docker build -t playerapplication .'
+2) After that navigate to root/frontend/front-end and run 'docker build -t frontend .'
+3) You should now see these images in your local docker repository.
+
+
 Navigate to root directory and run,
 docker compose up
 
