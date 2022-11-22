@@ -32,18 +32,18 @@ public class PlayerController {
     public ResponseEntity<Response> addPlayer(@RequestBody Player player){
         LOGGER.info("Received Player To Create, firstName={}, lastName={}, number={}",player.getFirstName(), player.getLastName(), player.getNumber());
 
-        playerService.createPlayer(player);
+        Response response = playerService.createPlayer(player);
 
-        return new ResponseEntity<>(new Response(HttpStatus.OK,"Successful").getStatus());
+        return new ResponseEntity<>(response, response.getStatus());
     }
 
     @PutMapping (value = "/updateplayer", headers = "Accept=application/json")
     public ResponseEntity<Response> updatePlayer(@RequestBody Player player){
         LOGGER.info("Received Player To Update, firstName={}, lastName={}, number={}",player.getFirstName(), player.getLastName(), player.getNumber());
 
-        playerService.updatePlayer(player);
+        Response response = playerService.updatePlayer(player);
 
-        return new ResponseEntity<>(new Response(HttpStatus.OK,"Successful").getStatus());
+        return new ResponseEntity<>(response, response.getStatus());
     }
 
 
